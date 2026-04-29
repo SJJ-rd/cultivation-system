@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2b0f0c" />
+  <title>生活轉化修持系統｜最終道場版</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="enterGate" class="enter-gate">
+    <div class="gate-card breathing">
+      <div class="lotus">🪷</div>
+      <h1>生活轉化修持系統</h1>
+      <p>請調息三息，觀照自心</p>
+      <blockquote>自心一點光明<br>與法界光明相應<br>無二無別</blockquote>
+      <button id="enterBtn" class="gold-btn">入壇修持</button>
+      <button id="silentEnterBtn" class="ghost-btn">靜音入壇</button>
+    </div>
+  </div>
+
+  <div class="ambient"></div>
+
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="seal">🪷</div>
+        <h2>修持道場</h2>
+        <p id="todayText"></p>
+      </div>
+
+      <nav>
+        <button class="nav active" data-page="practicePage">今日修持</button>
+        <button class="nav" data-page="kowtowPage">叩首修行</button>
+        <button class="nav" data-page="ritualPage">儀軌導讀</button>
+        <button class="nav" data-page="meditationPage">靜坐回向</button>
+        <button class="nav" data-page="zhanchaPage">占察觀照</button>
+        <button class="nav" data-page="historyPage">修持歷史</button>
+        <button class="nav" data-page="dataPage">資料管理</button>
+      </nav>
+
+      <div class="side-box">
+        <span>修行位階</span>
+        <strong id="levelText">初發心</strong>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section id="practicePage" class="page active">
+        <header class="hero">
+          <div>
+            <span class="eyebrow">Daily Ritual Flow</span>
+            <h1>今日修持流程</h1>
+            <p id="wisdomText">先觀心，再行動。</p>
+          </div>
+          <div class="merit-circle">
+            <strong id="meritValue">0</strong>
+            <span>今日功德值</span>
+          </div>
+        </header>
+
+        <div class="flow-card card">
+          <h3>修持順序</h3>
+          <div class="steps">
+            <div class="step active" id="step-kowtow"><span>1</span><b>叩首</b><small>放下我執</small></div>
+            <div class="step" id="step-ritual"><span>2</span><b>儀軌</b><small>發願懺悔</small></div>
+            <div class="step" id="step-meditation"><span>3</span><b>靜坐</b><small>心如明鏡</small></div>
+            <div class="step" id="step-dedication"><span>4</span><b>回向</b><small>功德圓滿</small></div>
+          </div>
+          <div class="button-row">
+            <button class="gold-btn" id="goCurrentStep">前往目前階段</button>
+            <button class="ghost-btn" id="completeCurrentStep">完成此階段</button>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>今日定課</h3>
+            <label><input type="checkbox" id="morning"> 早課完成</label>
+            <label><input type="checkbox" id="evening"> 晚課完成</label>
+            <label><input type="checkbox" id="ritualDone"> 生活轉化修持法完成</label>
+            <label><input type="checkbox" id="preceptDone"> 淫戒專修觀照</label>
+            <label><input type="checkbox" id="nightDone"> 夜間防護完成</label>
+          </div>
+
+          <div class="card">
+            <h3>今日數量</h3>
+            <div class="form-row"><span>叩首數</span><input type="number" id="dailyBow" min="0"></div>
+            <div class="form-row"><span>靜坐分鐘</span><input type="number" id="dailyMeditation" min="0" value="3"></div>
+            <div class="form-row"><span>七佛真言</span><input type="number" id="dailySeven" min="0" value="3"></div>
+            <div class="form-row"><span>補缺真言</span><input type="number" id="dailyPatch" min="0" value="3"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>生活定錨</h3>
+          <div class="anchor">我心清淨・業力轉化・智慧現前・行皆正道</div>
+          <textarea id="habit" placeholder="今日我改一個習氣"></textarea>
+          <textarea id="note" placeholder="今日心得、覺察、懺悔、感恩"></textarea>
+          <button class="gold-btn" id="saveDaily">儲存今日修持</button>
+        </div>
+      </section>
+
+      <section id="kowtowPage" class="page">
+        <header class="hero">
+          <div>
+            <span class="eyebrow">Kowtow</span>
+            <h1>叩首修行</h1>
+            <p>每一拜，默念「放下我執」。</p>
+          </div>
+          <div class="merit-circle">
+            <strong id="kowtowCountSmall">0</strong>
+            <span>叩首數</span>
+          </div>
+        </header>
+
+        <div class="card kowtow-main">
+          <div class="light-orb breathing" id="kowtowOrb">放下我執</div>
+          <div class="big-count" id="kowtowCount">0</div>
+          <div class="button-row">
+            <button class="gold-btn large" id="kowtowOne">+1</button>
+            <button class="gold-btn large" id="kowtowTen">+10</button>
+            <button class="ghost-btn" id="kowtowUndo">-1</button>
+            <button class="danger" id="kowtowReset">重設</button>
+          </div>
+          <div class="target">
+            <select id="kowtowTarget">
+              <option value="108">108 拜</option>
+              <option value="300">300 拜</option>
+              <option value="500">500 拜</option>
+              <option value="1000">1000 拜</option>
+            </select>
+            <div class="progress"><div id="kowtowProgress"></div></div>
+            <p id="kowtowProgressText">0 / 108</p>
+          </div>
+          <button id="saveKowtow" class="ghost-btn">儲存叩首紀錄</button>
+        </div>
+      </section>
+
+      <section id="ritualPage" class="page">
+        <header class="hero">
+          <div>
+            <span class="eyebrow">Ritual Guide</span>
+            <h1>儀軌導讀</h1>
+            <p>一段一段誦念，不急不躁。</p>
+          </div>
+        </header>
+
+        <div class="card reader">
+          <div id="ritualStepLabel" class="reader-label"></div>
+          <div id="ritualReader" class="reader-content"></div>
+          <div class="button-row">
+            <button id="prevRitual" class="ghost-btn">上一段</button>
+            <button id="nextRitual" class="gold-btn">下一段</button>
+            <button id="completeRitual" class="ghost-btn">儀軌完成</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="meditationPage" class="page">
+        <header class="hero">
+          <div>
+            <span class="eyebrow">Meditation</span>
+            <h1>靜坐與回向</h1>
+            <p>心如明鏡，清淨光明。</p>
+          </div>
+        </header>
+
+        <div class="grid two">
+          <div class="card center">
+            <div class="breath-circle breathing" id="breathCircle">吸氣<br>吐氣</div>
+            <div class="timer" id="timerText">03:00</div>
+            <div class="button-row">
+              <button class="gold-btn" id="startTimer">開始三分鐘</button>
+              <button class="ghost-btn" id="resetTimer">重設</button>
+            </div>
+          </div>
+          <div class="card ritual-text">
+            <h3>後回向</h3>
+            <blockquote>願我今日所修一切功德<br>優先回向冤親大德<br>願其離苦得樂<br>怨結化解<br>轉為護法善緣</blockquote>
+            <h3>普迴向</h3>
+            <blockquote>願以此功德<br>普及於一切<br>我等與眾生<br>皆共成佛道</blockquote>
+            <button id="completeDedication" class="gold-btn">回向完成</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="zhanchaPage" class="page">
+        <header class="hero">
+          <div>
+            <span class="eyebrow">Zhancha</span>
+            <h1>占察觀照</h1>
+            <p>只作懺悔、改過、精進之助緣。</p>
+          </div>
+        </header>
+
+        <div class="card">
+          <h3>占察前發願</h3>
+          <blockquote>我今至心占察善惡業報，願以正知正見觀照自心，不執著結果，唯作懺悔、改過、精進之助緣。</blockquote>
+          <button class="gold-btn" id="startZhancha">開始靜心占察</button>
+          <div id="zhanchaStatus" class="status">尚未開始</div>
+          <div class="wheels">
+            <div class="wheel" id="wheel1">一</div>
+            <div class="wheel" id="wheel2">二</div>
+            <div class="wheel" id="wheel3">三</div>
+          </div>
+          <div id="zhanchaResult" class="result"></div>
+        </div>
+      </section>
+
+      <section id="historyPage" class="page">
+        <header class="hero"><div><span class="eyebrow">History</span><h1>修持歷史</h1><p>回顧過往，穩定前行。</p></div></header>
+        <div class="card">
+          <button id="refreshHistory" class="ghost-btn">重新整理</button>
+          <div id="historyList"></div>
+        </div>
+      </section>
+
+      <section id="dataPage" class="page">
+        <header class="hero"><div><span class="eyebrow">Data</span><h1>資料管理</h1><p>本機儲存，可匯出備份。</p></div></header>
+        <div class="card">
+          <button id="exportData" class="gold-btn">匯出 JSON</button>
+          <input id="importData" type="file" accept=".json">
+          <button id="clearData" class="danger">清除全部資料</button>
+          <pre id="dataPreview"></pre>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

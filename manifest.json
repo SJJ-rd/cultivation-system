@@ -1,0 +1,15 @@
+{
+  "name": "生活轉化修持系統｜最終道場版",
+  "short_name": "修持道場",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#2b0f0c",
+  "theme_color": "#2b0f0c",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
